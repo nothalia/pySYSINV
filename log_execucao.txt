@@ -60,3 +60,30 @@ Conexão realizada com sucesso!
 --- 
 Executando em: 05/05/2025 20:05:03,83 
 Conexão realizada com sucesso!
+--- 
+Executando em: 05/05/2025 20:16:19,07 
+Conexão realizada com sucesso!
+--- 
+Executando em: 05/05/2025 20:25:02,37 
+Conexão realizada com sucesso!
+--- 
+Executando em: 05/05/2025 20:35:01,84 
+Conexão realizada com sucesso!
+--- 
+Executando em: 05/05/2025 20:45:01,58 
+Conexão realizada com sucesso!
+--- 
+Executando em: 05/05/2025 20:55:01,64 
+Conexão realizada com sucesso!
+--- 
+Executando em: 05/05/2025 21:05:01,60 
+Conexão realizada com sucesso!
+--- 
+Executando em: 05/05/2025 21:15:01,59 
+Conexão realizada com sucesso!
+--- 
+Executando em: 05/05/2025 21:25:02,49 
+Conexão realizada com sucesso!
+--- 
+Executando em: 05/05/2025 21:35:02,09 
+Conexão realizada com sucesso!
