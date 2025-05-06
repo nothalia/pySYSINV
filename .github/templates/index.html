@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Minhas Ações</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Minhas Ações</h1>
+
+        <a href="{{ url_for('nova_acao') }}" class="btn btn-primary mb-3">Nova Ação</a>
+        <a href="{{ url_for('nova_simulacao') }}" class="btn btn-primary mb-3">Simulação</a>
+
+        <table class="table table-hover table-bordered bg-white shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>SYSINV made by nathalia</th>
+                    <th>Total investido: R$ {{ "{:,.2f}".format(total_vrtotal) }}</th>
+                </tr>
+            </thead>
+            <tbody>
+              {% if acoes %}
+    <!-- Se existirem ações, exibe a tabela -->
+    <table class="table table-hover table-bordered bg-white shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Valor Médio</th>
+                <th>Valor Atual</th>
+                <th>Valor Total</th>
+                <th>Ações</th>
+                <th>B3?</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for acao in acoes %}
+                <tr>
+                    <td>{{ acao.NMACOES }}</td>
+                    <td>{{ acao.QTDACOES }}</td>
+                    <td>R$ {{ "%.2f"|format(acao.VRMEDIO) }}</td>
+                    <td>R$ {{ "%.2f"|format(acao.VRATUAL) }}</td>
+                    <td>R$ {{ "%.2f"|format(acao.VRTOTAL) }}</td>
+                    <td>
+                        <a href="{{ url_for('editar_acao', id=acao.IDACOES) }}" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="{{ url_for('excluir', id=acao.IDACOES) }}" class="btn btn-sm btn-danger">Excluir</a>
+                        <a href="{{ url_for('nova_hist_acao', idacao=acao.IDACOES) }}" class="btn btn-sm btn-success">Nova Compra</a>
+                        <a href="{{ url_for('ver_hist_acao', id_acao=acao.IDACOES) }}" class="btn btn-sm btn-dark">Histórico</a>
+                    </td>
+                    <td>{{ acao.FLSA }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <!-- Se não existirem ações, exibe uma mensagem -->
+    <p>Não há ações registradas.</p>
+{% endif %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

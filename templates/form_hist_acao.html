@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Histórico de Compra</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <div class="card shadow p-4">
+            <h2 class="mb-4">{{ acaohist and 'Editar Compra' or 'Nova Compra' }}</h2>
+            
+            <form method="POST" action="{% if acaohist and acaohist[0] %}{{ url_for('salvar_hist_acao', id=acaohist[0].IDCMPACOES) }}{% else %}{{ url_for('criar_hist_acao') }}{% endif %}">
+                
+                <div class="mb-3">
+                    <label for="idacao" class="form-label">Ação</label>
+                    <select class="form-select" name="idacao" required>
+                        {% for acao in acoes %}
+                            <option value="{{ acao.IDACOES }}">{{ acao.NMACOES }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- {% if id_acao %}
+                    <input type="hidden" name="idacao" value="{{ id_acao }}">
+                {% else %}
+                    <div class="mb-3">
+                        <label for="idacao" class="form-label">ID da Ação</label>
+                        <input type="text" class="form-control" name="idacao" id="idacao" value="{{ acaohist[0].IDACOES if acaohist else '' }}" required>
+                    </div>
+                {% endif %} -->
+
+                <div class="mb-3">
+                    <label for="dtcompra" class="form-label">Data da Compra</label>
+                    <input type="date" class="form-control" name="dtcompra" id="dtcompra" value="{{ acaohist[0].DTCMP.strftime('%Y-%m-%d') if acaohist and acaohist[0].DTCMP else '' }}" required>
+
+                </div>              
+                <div class="mb-3">
+                    <label for="vrcompra" class="form-label">Valor da Compra</label>
+                    <input type="number" step="0.01" class="form-control" name="vrcompra" id="vrcompra" value="{{ acaohist[0].VRCMP if acaohist else '' }}" required>
+                </div>              
+                <div class="mb-3">
+                    <label for="qtdcompra" class="form-label">Quantidade</label>
+                    <input type="float" step="0.01" class="form-control" name="qtdcompra" id="qtdcompra" value="{{ acaohist[0].QTDACOES if acaohist else '' }}" required>
+                </div>              
+                <div class="mb-3">
+                    <label for="nmcorretora" class="form-label">Corretora</label>
+                    <input type="text" class="form-control" name="nmcorretora" id="nmcorretora" value="{{ acaohist[0].NMCORRETORA if acaohist else '' }}" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">{{ acaohist and 'Salvar Alterações' or 'Cadastrar Compra' }}</button>
+                <a href="{{ url_for('index') }}" class="btn btn-secondary ms-2">Cancelar</a>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

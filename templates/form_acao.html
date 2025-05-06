@@ -1,0 +1,54 @@
+<!-- templates/form_acao.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ 'Editar' if acao else 'Nova' }} Ação</title>
+</head>
+<body>
+    <h1>{{ '✏️ Editar' if acao else '➕ Nova' }} Ação</h1>
+    
+    <form action="{{ url_for('salvar_acao', id=acao.IDACOES) if acao else url_for('criar_acao') }}" method="POST">
+        <label>Nome:</label><br>
+        <input type="text" name="nome" value="{{ acao.NMACOES if acao else '' }}"><br>
+
+        <label>Quantidade:</label><br>
+        <input type="number" step="0.000001" name="quantidade" value="{{ acao.QTDACOES if acao else '' }}"><br>
+
+        <label>Preço Médio:</label><br>
+        <input type="number" step="0.01" name="vrmedio" value="{{ acao.VRMEDIO if acao else '' }}"><br>
+
+        <label>Valor Atual:</label><br>
+        <input type="number" step="0.01" name="vratual" value="{{ acao.VRATUAL if acao else '' }}"><br><br>
+
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="flsa_acao" id="flsa_acao" value="S" {% if acao.flsa_acao == 'S' %}checked{% endif %}>
+          <label class="form-check-label" for="flsa_acao">
+            Negociada na B3 (.SA)?
+          </label>
+        </div>
+
+        <button type="submit">{{ 'Salvar Alterações' if acao else 'Cadastrar' }}</button>
+        
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>   
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+ <html>
+ <head>
+   <title>Nova Ação</title>
+ </head>
+ <body>
+   <h1>Adicionar Ação</h1>
+   <form method="post">
+     Nome: <input type="text" name="nome"><br>
+     Quantidade: <input type="number" name="qtd"><br>
+     Valor Médio: <input type="text" name="vr_medio"><br>
+     Valor Atual: <input type="text" name="vr_atual"><br>
+     <button type="submit">Salvar</button>
+   </form>
+ </body>
+ </html>  -->

@@ -1,0 +1,16 @@
+--- 
+Executando em: 03/05/2025 21:35:02,20 
+Traceback (most recent call last):
+  File "C:\Users\nathyyy\Downloads\pySYSINV\atualizacoes.py", line 1, in <module>
+    from db.connection import conecta_banco
+  File "C:\Users\nathyyy\Downloads\pySYSINV\db\connection.py", line 21, in <module>
+    print("\u2705 Conexão realizada com sucesso!")
+  File "C:\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 0: character maps to <undefined>
+--- 
+Executando em: 03/05/2025 21:45:02,32 
+Conexão realizada com sucesso!
+--- 
+Executando em: 03/05/2025 21:55:27,04 
+Conexão realizada com sucesso!
